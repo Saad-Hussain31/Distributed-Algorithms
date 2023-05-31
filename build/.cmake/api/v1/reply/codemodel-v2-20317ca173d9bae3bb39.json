@@ -1,0 +1,86 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "DistributedAlgos",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ExcludeOnTimeout::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExcludeOnTimeout-Debug-c6481f8082ed9ab020bf.json",
+					"name" : "ExcludeOnTimeout",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rrbroker::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rrbroker-Debug-e7f8dec8880895c39c4d.json",
+					"name" : "rrbroker",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rrclient::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rrclient-Debug-ec09006c9fa1da21794b.json",
+					"name" : "rrclient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rrworker::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rrworker-Debug-90854c5f2f4b95324ed2.json",
+					"name" : "rrworker",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/alma/DistributedAlgorithms/build",
+		"source" : "/home/alma/DistributedAlgorithms"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}
