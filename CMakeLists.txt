@@ -22,3 +22,6 @@ target_link_libraries(rrworker cppzmq)
 
 add_executable(rrbroker zmq/rrbroker.cpp)
 target_link_libraries(rrbroker cppzmq)
+
+add_executable(zmq_proxy zmq/zmq_proxy.cpp)
+target_link_libraries(zmq_proxy cppzmq)

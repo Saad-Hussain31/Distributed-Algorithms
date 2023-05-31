@@ -13,30 +13,28 @@ int main (int argc, char *argv[])
 
     //  Initialize poll set
     zmq::pollitem_t items [] = {
-        { frontend, 0, ZMQ_POLLIN, 0 },
-        { backend, 0, ZMQ_POLLIN, 0 }
+        { frontend, 0, ZMQ_POLLIN, 0 }, //item 1 to be polled
+        { backend, 0, ZMQ_POLLIN, 0 } //item 2 to be polled
     };
+    
     
     //  Switch messages between sockets
     while (1) {
         zmq::message_t message;
-        int more;               //  Multipart detection
+        int more;               //  Multipart detection(0 or 1)
 
-        zmq::poll (&items [0], 2, -1);
+        zmq::poll(&items [0], 2, -1);
         
         if (items [0].revents & ZMQ_POLLIN) {
             while (1) {
                 //  Process all parts of the message
-                // frontend.recv(&message);
-                frontend.recv(message, zmq::recv_flags::none); // new syntax
+                frontend.recv(message, zmq::recv_flags::none);
                 size_t more_size = sizeof (more);
-                // frontend.getsockopt(ZMQ_RCVMORE, &more, &more_size);
-                // backend.send(message, more? ZMQ_SNDMORE: 0);
-                more = frontend.get(zmq::sockopt::rcvmore); // new syntax
+                more = frontend.get(zmq::sockopt::rcvmore); 
                 backend.send(message, more? zmq::send_flags::sndmore : zmq::send_flags::none);
                 
                 if (!more)
-                    break;      //  Last message part
+                    break;      
             }
         }
         if (items [1].revents & ZMQ_POLLIN) {
@@ -44,15 +42,15 @@ int main (int argc, char *argv[])
                 //  Process all parts of the message
                 backend.recv(&message);
                 size_t more_size = sizeof (more);
-                // backend.getsockopt(ZMQ_RCVMORE, &more, &more_size);
-                // frontend.send(message, more? ZMQ_SNDMORE: 0);
-                more = backend.get(zmq::sockopt::rcvmore); // new syntax
+                more = backend.get(zmq::sockopt::rcvmore); 
                 frontend.send(message, more? zmq::send_flags::sndmore : zmq::send_flags::none);
 
                 if (!more)
-                    break;      //  Last message part
+                    break;      
             }
         }
     }
+    
+    
     return 0;
 }
