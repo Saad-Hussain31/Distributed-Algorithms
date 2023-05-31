@@ -1,6 +1,0 @@
-/home/alma/DistributedAlgorithms/build/CMakeFiles/rebuild_cache.dir
-/home/alma/DistributedAlgorithms/build/CMakeFiles/edit_cache.dir
-/home/alma/DistributedAlgorithms/build/CMakeFiles/rrbroker.dir
-/home/alma/DistributedAlgorithms/build/CMakeFiles/rrworker.dir
-/home/alma/DistributedAlgorithms/build/CMakeFiles/ExcludeOnTimeout.dir
-/home/alma/DistributedAlgorithms/build/CMakeFiles/rrclient.dir

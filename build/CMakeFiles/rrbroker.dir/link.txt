@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/rrbroker.dir/zmq/rrbroker.cpp.o -o rrbroker  -Wl,-rpath,/usr/local/lib64 /usr/local/lib64/libzmq.so.5.2.5 -lpthread -lpgm -lpthread -lm -lrt 
