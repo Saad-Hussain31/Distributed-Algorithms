@@ -25,7 +25,7 @@ int main (int argc, char *argv[])
 
         zmq::poll(&items [0], 2, -1);
         
-        if (items [0].revents & ZMQ_POLLIN) {
+        if (items [0].revents & ZMQ_POLLIN) { //If the frontend socket has an incoming message 
             while (1) {
                 //  Process all parts of the message
                 frontend.recv(message, zmq::recv_flags::none);

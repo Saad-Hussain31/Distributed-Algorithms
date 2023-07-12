@@ -6,14 +6,12 @@ find_package(cppzmq REQUIRED)
 
 
 
-add_executable(ExcludeOnTimeout Chapter2/ExcludeOnTimeout.cpp)
-target_link_libraries(ExcludeOnTimeout -pthread)
+# add_executable(ExcludeOnTimeout Chapter2/ExcludeOnTimeout.cpp)
+# target_link_libraries(ExcludeOnTimeout -pthread)
 
 
 add_executable(rrclient zmq/rrclient.cpp)
 target_link_libraries(rrclient cppzmq)
-
-
 
 
 add_executable(rrworker zmq/rrworker.cpp)
@@ -23,5 +21,18 @@ target_link_libraries(rrworker cppzmq)
 add_executable(rrbroker zmq/rrbroker.cpp)
 target_link_libraries(rrbroker cppzmq)
 
-add_executable(zmq_proxy zmq/zmq_proxy.cpp)
-target_link_libraries(zmq_proxy cppzmq)
+add_executable(msgqueue zmq/msgqueue.cpp)
+target_link_libraries(msgqueue cppzmq)
+
+
+add_executable(wuproxy zmq/wuproxy.cpp)
+target_link_libraries(wuproxy cppzmq)
+
+# add_executable(identity zmq/identity.cpp)
+# target_link_libraries(identity cppzmq)
+
+# add_executable(bind zmq/bind.cpp)
+# target_link_libraries(bind cppzmq)
+
+
+
