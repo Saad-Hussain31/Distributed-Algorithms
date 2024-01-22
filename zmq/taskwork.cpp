@@ -1,16 +1,21 @@
+/*
+ This program continuously receives workload tasks from the 'receiver' socket,
+ processes each task by sleeping for a duration specified in the workload, and forwards the tasks to the 'worker' socket.
+*/
+
 #include "zhelpers.hpp"
 #include <string>
 
 int main (int argc, char *argv[]) {
     zmq::context_t ctx(1);
 
-    //worker process
-    zmq::socket_t worker(ctx, ZMQ_PUSH);
-    worker.connect("tcp://localhost:5558");
-
     //takes(pulls) tasks from sink socket 
     zmq::socket_t receiver(ctx, ZMQ_PULL);
     receiver.connect("tcp://localhost:5557");
+
+    //worker(sender) process 
+    zmq::socket_t worker(ctx, ZMQ_PUSH);
+    worker.connect("tcp://localhost:5558");
 
     zmq::socket_t controller(ctx, ZMQ_SUB);
     controller.connect("tcp://localhost:5559");

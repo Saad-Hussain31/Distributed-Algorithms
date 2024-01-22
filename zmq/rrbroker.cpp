@@ -16,7 +16,13 @@ int main (int argc, char *argv[])
         { frontend, 0, ZMQ_POLLIN, 0 }, //item 1 to be polled
         { backend, 0, ZMQ_POLLIN, 0 } //item 2 to be polled
     };
-    
+
+
+    std::vector<zmq::pollitem_t> item = 
+    {
+        { frontend, 0, ZMQ_POLLIN, 0 }, //item 1 to be polled
+        { backend, 0, ZMQ_POLLIN, 0 } //item 2 to be polled
+    };
     
     //  Switch messages between sockets
     while (1) {
@@ -25,7 +31,7 @@ int main (int argc, char *argv[])
 
         zmq::poll(&items [0], 2, -1);
         
-        if (items [0].revents & ZMQ_POLLIN) { //If the frontend socket has an incoming message 
+        if (item [0].revents & ZMQ_POLLIN) { //If the frontend socket has an incoming message 
             while (1) {
                 //  Process all parts of the message
                 frontend.recv(message, zmq::recv_flags::none);
@@ -37,7 +43,7 @@ int main (int argc, char *argv[])
                     break;      
             }
         }
-        if (items [1].revents & ZMQ_POLLIN) {
+        if (item [1].revents & ZMQ_POLLIN) {
             while (1) {
                 //  Process all parts of the message
                 backend.recv(&message);

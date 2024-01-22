@@ -31,6 +31,9 @@ target_link_libraries(wuproxy cppzmq)
 add_executable(taskwork zmq/taskwork.cpp)
 target_link_libraries(taskwork cppzmq)
 
+add_executable(tasksink zmq/tasksink.cpp)
+target_link_libraries(tasksink cppzmq)
+
 # add_executable(identity zmq/identity.cpp)
 # target_link_libraries(identity cppzmq)
 
