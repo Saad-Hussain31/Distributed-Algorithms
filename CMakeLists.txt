@@ -28,6 +28,9 @@ target_link_libraries(msgqueue cppzmq)
 add_executable(wuproxy zmq/wuproxy.cpp)
 target_link_libraries(wuproxy cppzmq)
 
+add_executable(taskwork zmq/taskwork.cpp)
+target_link_libraries(taskwork cppzmq)
+
 # add_executable(identity zmq/identity.cpp)
 # target_link_libraries(identity cppzmq)
 
