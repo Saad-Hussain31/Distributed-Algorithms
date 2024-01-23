@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.18)
 project(DistributedAlgos)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -33,6 +33,9 @@ target_link_libraries(taskwork cppzmq)
 
 add_executable(tasksink zmq/tasksink.cpp)
 target_link_libraries(tasksink cppzmq)
+
+add_executable(interrupt zmq/interrupt.cpp)
+target_link_libraries(interrupt cppzmq)
 
 # add_executable(identity zmq/identity.cpp)
 # target_link_libraries(identity cppzmq)
