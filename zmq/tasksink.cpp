@@ -1,22 +1,37 @@
+/*
+  Adds pub-sub flow to send kill signal to workers and calculate task processing time
+RUN:
+./tasksink 5558 5559&
+./tasksink 5561 5562&
+./tasksink 5564 5565&
+*/
+
 #include "zhelpers.hpp"
 #include <chrono>
 
 int main(int argc, char* argv[]) {
+
+    if (argc != 3){
+        std::cerr << "Usage: " << argv[0] << " <receiver_port> <controller_port>\n";
+        return 1;
+    }
+
+    int receiver_port = std::stoi(argv[1]);
+    int controller_port = std::stoi(argv[2]);
     zmq::context_t ctx(1);
 
     zmq::socket_t receiver(ctx, ZMQ_PULL);
-    receiver.connect("tcp://localhost:5558");
+    receiver.bind("tcp://*:" + std::to_string(receiver_port));
 
     zmq::socket_t controller(ctx, ZMQ_PUB);
-    receiver.connect("tcp://localhost:5559");
+    receiver.bind("tcp://*:" + std::to_string(controller_port));
 
     s_recv(receiver);
 
-    // Start our clock now
     auto tstart = std::chrono::high_resolution_clock::now();
 
-    // Process 10 confirmations
-    for (int task_nbr = 0; task_nbr < 10; ++task_nbr) {
+    // Process 100 confirmations
+    for (int task_nbr = 0; task_nbr < 100; ++task_nbr) {
         s_recv(receiver);
 
         std::cout << (task_nbr % 10 == 0 ? ":" : ".");
