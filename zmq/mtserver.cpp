@@ -32,7 +32,7 @@ int main() {
     std::vector<std::thread> worker_threads;
     for (int thread_nbr = 0; thread_nbr != 5; ++thread_nbr) {
         // worker_threads.emplace_back(worker_routine, &ctx);
-        worker_threads.emplace_back([&ctx] { worker_routine(ctx); });
+        worker_threads.emplace_back([&ctx] { worker_routine(ctx); }); // captures ctx from outter scope and uses inside lambda body (to provide to worker_routine)
     }
 
     zmq::proxy(clients, workers, nullptr);
