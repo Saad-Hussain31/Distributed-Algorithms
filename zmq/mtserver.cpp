@@ -7,7 +7,7 @@
 #include <zmq.hpp>
 
 void worker_routine(zmq::context_t& ctx) {
-    zmq::socket_t socket(*ctx, ZMQ_REP);
+    zmq::socket_t socket(ctx, ZMQ_REP);
     socket.connect("inproc://workers");
 
     while(true) {
