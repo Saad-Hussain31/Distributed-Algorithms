@@ -37,6 +37,12 @@ target_link_libraries(tasksink cppzmq)
 add_executable(interrupt zmq/interrupt.cpp)
 target_link_libraries(interrupt cppzmq)
 
+add_executable(mtrelay zmq/mtrelay.cpp)
+target_link_libraries(mtrelay cppzmq)
+
+add_executable(mtserver zmq/mtserver.cpp)
+target_link_libraries(mtserver cppzmq)
+
 # add_executable(identity zmq/identity.cpp)
 # target_link_libraries(identity cppzmq)
 
